@@ -1,6 +1,4 @@
-var PLAY = 1;
-var END = 0;
-var gameState = 1;
+
 var monkey , monkey_running, monkey_collided
 var banana ,bananaImage, obstacle, obstacleImage
 var FoodGroup, obstacleGroup
@@ -42,9 +40,6 @@ function draw() {
   background(255);
   
 
-  
-  if(gameState === PLAY){
-
   stroke("white");
   textSize(20);
   fill("white");
@@ -69,21 +64,18 @@ function draw() {
    
   //setting gravity
     monkey.velocityY = monkey.velocityY + 0.8
-  }
   
   monkey.collide(ground);
   
   if(monkey.isTouching(obstaclesGroup)){
-gameState = END;
-  }
-  
-  if(gameState === END){
     ground.velocityX = 0;
     monkey.velocityX = 0;
     monkey.changeAnimation("collided",monkey_collided);
     obstaclesGroup.setVelocityXEach(0);
     bananaGroup.setVelocityXEach(0);
   }
+  
+
 
   
   obstacles();
